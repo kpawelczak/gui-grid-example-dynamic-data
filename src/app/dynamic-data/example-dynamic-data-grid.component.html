@@ -1,0 +1,55 @@
+<div class="gw-dynamic-data-form">
+
+  <gui-grid [cellEditing]="true"
+            [columns]="columns"
+            [maxHeight]="466"
+            [sorting]="true"
+            [source]="source"
+            class="gw-dynamic-data-grid">
+  </gui-grid>
+
+  <form [formGroup]="createProjectForm">
+
+    <h3>New Project</h3>
+
+    <label>
+      Project name:
+      <input formControlName="name" gui-input>
+    </label>
+
+    <label>
+      Project leader:
+      <input formControlName="leader" gui-input>
+    </label>
+
+    <label>
+      Start date:
+      <input formControlName="startDate" gui-input type="date">
+    </label>
+
+    <label>
+      End date:
+      <input formControlName="endDate" gui-input type="date">
+    </label>
+
+    <label>
+      Progress:
+      <mat-slider [formControlName]="'progress'"
+                  max="100"
+                  min="0"
+                  step="1"
+                  thumbLabel
+                  tickInterval="10"></mat-slider>
+    </label>
+
+
+    <button (click)="createProject()"
+            [disabled]="!createProjectForm.valid"
+            gui-button
+            type="submit">
+      Add
+    </button>
+
+  </form>
+
+</div>
